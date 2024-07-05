@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+//TODO ajouter try/catch pour tous les CRUD / tous les repo
+
 
 public class RepositoryCompteCourant {
 

@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
+//TODO ajouter try/catch pour tous les CRUD / tous les repo
+
 
 public class RepositoryClient {
     private SessionFactory sessionFactory;
