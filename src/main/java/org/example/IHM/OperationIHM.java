@@ -1,5 +1,7 @@
 package org.example.IHM;
 
+import org.example.entity.Client;
+import org.example.entity.CompteBancaire;
 import org.example.repository.RepositoryClient;
 import org.example.repository.RepositoryOperation;
 
@@ -16,7 +18,7 @@ public class OperationIHM {
         repositoryClient = new RepositoryClient();
 
     }
-    public void start(){
+    public void Start(){
         String command;
         while(true){
             System.out.println("---Operation Menu ---");
@@ -29,11 +31,10 @@ public class OperationIHM {
             command = sc.nextLine();
             switch(command){
                 case "1"-> createOperation();
-                case "2"-> displayOperation();
-                case "3"-> displayOperation();
-                case "4"-> displayOperationByID();
-                case "5"-> updateOperation();
-                case "6"-> deleteOperation();
+                case "2"-> displayAllOperation();
+                case "3"-> displayOperationByID();
+                case "4"-> updateOperation();
+                case "5"-> deleteOperation();
                 default -> {
                     System.out.println("Invalid command");
                     return;
@@ -43,17 +44,42 @@ public class OperationIHM {
     }
     private void createOperation(){
 
-    }
-    private void displayOperation(){
+        try{
 
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    private void displayAllOperation(){
+
+        try{
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     private void displayOperationByID(){
 
+        try{
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     private void updateOperation(){
 
+        try{
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     private void deleteOperation(){
 
+        try{
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
