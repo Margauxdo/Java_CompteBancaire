@@ -6,6 +6,7 @@ import org.example.repository.RepositoryClient;
 import java.util.Scanner;
 
 public class ClientIHM {
+<<<<<<< HEAD
     private Scanner sc;
     private RepositoryClient repositoryClient;
 
@@ -55,4 +56,7 @@ public class ClientIHM {
 
 
     }
+=======
+
+>>>>>>> 2d6ea4be5176e680efd113d3d30479322a5e7210
 }
