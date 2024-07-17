@@ -97,6 +97,12 @@ public class ClientIHM {
             int id = Integer.parseInt(sc.nextLine());
 
             Client client = repositoryClient.findClientById(id);
+
+            if(client == null){
+                System.out.println("client not found ! ");
+                return;
+            }
+
             System.out.println("Name : " + client.getName());
             System.out.println("entry the name of the client");
             String name = sc.nextLine();
@@ -111,7 +117,7 @@ public class ClientIHM {
             client.setPhone(phone);
 
             client=repositoryClient.updateClient(client);
-            System.out.println("New Client : " + client);
+            System.out.println("Update Client : " + client);
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -123,7 +129,12 @@ public class ClientIHM {
             System.out.println("ID : ");
             int id = Integer.parseInt(sc.nextLine());
             Client client = repositoryClient.findClientById(id);
-            repositoryClient.deleteClient(client);
+            if (client != null){
+                repositoryClient.deleteClient(client);
+                System.out.println("client deleted !!");
+            }else {
+                System.out.println("client not found!");
+            }
         }catch (Exception e){
             System.out.println(e.getMessage());;
         }
