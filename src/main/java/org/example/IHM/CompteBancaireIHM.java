@@ -1,8 +1,6 @@
 package org.example.IHM;
 
-import org.example.entity.Client;
-import org.example.entity.CompteCourant;
-import org.example.entity.Operation;
+import org.example.entity.*;
 import org.example.repository.RepositoryClient;
 import org.example.repository.RepositoryCompteCourant;
 import org.example.repository.RepositoryCompteEpargne;
@@ -142,6 +140,18 @@ public class CompteBancaireIHM {
         try{
 
             System.out.println("--- Create Current Account---");
+            System.out.println("---create current account---");
+            System.out.println("Pay: ");
+           int pay = sc.nextInt();
+            System.out.println("Operation: ");
+            String operations;
+            operations = sc.nextLine();
+
+            CompteCourant compteCourant = CompteCourant.builder()
+                    .pay(pay)
+                    .build();
+            compteCourant = repositoryCompteCourant.createCompteCourant(compteCourant);
+            System.out.println("current account : " + compteCourant);
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -150,7 +160,9 @@ public class CompteBancaireIHM {
     private void displayAllCurrentAccount(){
 
         try{
-
+            System.out.println("---Show all Current account---");
+            List<CompteCourant> compteCourants= repositoryCompteCourant.findAllCompteCourants();
+            compteCourants.forEach(System.out::println);
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -161,6 +173,11 @@ public class CompteBancaireIHM {
         try{
 
             System.out.println("--- Display Current Account by ID---");
+            System.out.println("---Show current account by ID---");
+            System.out.println("Id : ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.println(repositoryClient.findClientById(id));
 
 
         }catch (Exception e){
@@ -170,26 +187,69 @@ public class CompteBancaireIHM {
     private void updateCurrentAccount(){
 
         try{
+            System.out.println("---Update Current account---");
+            System.out.println("ID : ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            CompteCourant compteCourant = repositoryCompteCourant.findCompteCourantById(id);
+
+            if(compteCourant == null){
+                System.out.println("current account not found ! ");
+                return;
+            }
+
+            System.out.println("Pay : " + compteCourant.getPay());
+            System.out.println("entry the current account ");
+            int Pay = sc.nextInt();
+            compteCourant.setPay(Pay);
+
+
+            compteCourant =repositoryCompteCourant.updateCompteCourant(compteCourant);
+            System.out.println("Update current account : " + compteCourant);
 
 
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
     }
-    private void deleteCurrentAccount(){
+    private void deleteCurrentAccount() {
 
-        try{
-
-        }catch (Exception e){
+        try {
+            System.out.println("---Delete Current account---");
+            System.out.println("ID : ");
+            int id = Integer.parseInt(sc.nextLine());
+            CompteCourant compteCourant = repositoryCompteCourant.findCompteCourantById(id);
+            if (compteCourant != null) {
+                repositoryCompteCourant.deleteCompteCourant(compteCourant);
+                System.out.println("current account deleted !!");
+            } else {
+                System.out.println("current account not found!");
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
 
 
 
     private void createSavingsAccount(){
 
         try{
+            System.out.println("--- Create savings Account---");
+
+            System.out.println("Pay: ");
+            int pay = sc.nextInt();
+            System.out.println("Operation: ");
+            String operations;
+            operations = sc.nextLine();
+
+            CompteEpargne compteEpargne = CompteEpargne.builder()
+                    .pay(pay)
+                    .build();
+            compteEpargne = repositoryCompteEpargne.createCompteEpargne(compteEpargne);
+            System.out.println("savings account : " + compteEpargne);
+
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -198,6 +258,10 @@ public class CompteBancaireIHM {
     private void displayAllSavingsAccount(){
 
         try{
+            System.out.println("---Show all Savings account---");
+            List<CompteEpargne> compteEpargnes= repositoryCompteEpargne.findAllCompteEpargne();
+            compteEpargnes.forEach(System.out::println);
+
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -207,6 +271,13 @@ public class CompteBancaireIHM {
 
         try{
 
+            System.out.println("--- Display Savings Account by ID---");
+
+            System.out.println("Id : ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.println(repositoryCompteEpargne.findCompteEpargneById(id));
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -214,6 +285,25 @@ public class CompteBancaireIHM {
     private void updateSavingsAccount(){
 
         try{
+            System.out.println("---Update savings account---");
+            System.out.println("ID : ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            CompteEpargne compteEpargne = repositoryCompteEpargne.findCompteEpargneById(id);
+
+            if(compteEpargne == null){
+                System.out.println("savings account not found ! ");
+                return;
+            }
+
+            System.out.println("Pay : " + compteEpargne.getPay());
+            System.out.println("entry the savings account ");
+            int Pay = sc.nextInt();
+            compteEpargne.setPay(Pay);
+
+
+            compteEpargne =repositoryCompteEpargne.updateCompteEpargne(compteEpargne);
+            System.out.println("Update savings account : " + compteEpargne);
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -222,6 +312,17 @@ public class CompteBancaireIHM {
     private void deleteSavingsAccount(){
 
         try{
+
+            System.out.println("---Delete savings account---");
+            System.out.println("ID : ");
+            int id = Integer.parseInt(sc.nextLine());
+            CompteEpargne compteEpargne= repositoryCompteEpargne.findCompteEpargneById(id);
+            if (compteEpargne != null) {
+                repositoryCompteEpargne.deleteCompteEpargne(compteEpargne);
+                System.out.println("savings account deleted !!");
+            } else {
+                System.out.println("savings account not found!");
+            }
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -233,6 +334,20 @@ public class CompteBancaireIHM {
 
         try{
 
+            System.out.println("--- Create paid Account---");
+
+            System.out.println("Pay: ");
+            int pay = sc.nextInt();
+            System.out.println("Operation: ");
+            String operations;
+            operations = sc.nextLine();
+
+            ComptePayant comptePayant = ComptePayant.builder()
+                    .pay(pay)
+                    .build();
+            comptePayant = repositoryComptePayant.createComptePayant(comptePayant);
+            System.out.println("paid account : " + comptePayant);
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -240,6 +355,10 @@ public class CompteBancaireIHM {
     private void displayAllPaidAccount(){
 
         try{
+            System.out.println("---Show all Paid account---");
+            List<ComptePayant> comptePayants= repositoryComptePayant.findAllComptePayants();
+            comptePayants.forEach(System.out::println);
+
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -249,6 +368,13 @@ public class CompteBancaireIHM {
 
         try{
 
+            System.out.println("--- Display Paid Account by ID---");
+
+            System.out.println("Id : ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.println(repositoryComptePayant.findComptePayantById(id));
+
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -256,6 +382,26 @@ public class CompteBancaireIHM {
     private void updatePaidAccount(){
 
         try{
+            System.out.println("---Update paid account---");
+            System.out.println("ID : ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            ComptePayant comptePayant = repositoryComptePayant.findComptePayantById(id);
+
+            if(comptePayant == null){
+                System.out.println("pay account not found ! ");
+                return;
+            }
+
+            System.out.println("Pay : " + comptePayant.getPay());
+            System.out.println("entry the pay account ");
+            int Pay = sc.nextInt();
+            comptePayant.setPay(Pay);
+
+
+            comptePayant =repositoryComptePayant.updateComptesPayants(comptePayant);
+            System.out.println("Update pay account : " + comptePayant);
+
 
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -265,6 +411,16 @@ public class CompteBancaireIHM {
 
         try{
 
+            System.out.println("---Delete pay account---");
+            System.out.println("ID : ");
+            int id = Integer.parseInt(sc.nextLine());
+            ComptePayant comptePayant = repositoryComptePayant.findComptePayantById(id);
+            if (comptePayant != null) {
+                repositoryComptePayant.deleteComptePayants(comptePayant);
+                System.out.println("pay account deleted !!");
+            } else {
+                System.out.println("pay account not found!");
+            }
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
