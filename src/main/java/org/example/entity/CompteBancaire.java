@@ -12,7 +12,7 @@ import java.util.List;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class  CompteBancaire {
+public abstract class CompteBancaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

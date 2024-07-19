@@ -40,6 +40,7 @@ public class CompteBancaireIHM {
             command = sc.nextLine();
             switch (command) {
                 case "1" -> currentAccountMenu();
+
                 case  "2" -> savingsAccountMenu();
                 case  "3" -> paidAccountMenu();
                 default -> {

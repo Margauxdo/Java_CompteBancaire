@@ -28,12 +28,12 @@ public class ClientIHM {
             System.out.println("6. Exit");
             command = sc.nextLine();
             switch(command){
-                case "1": createClient();
-                case "2": displayAllClient();
-                case "3": displayClientByID();
-                case "4": updateClient();
-                case "5": deleteClient();
-                default:{
+                case "1"-> createClient();
+                case "2"-> displayAllClient();
+                case "3"-> displayClientByID();
+                case "4"-> updateClient();
+                case "5"-> deleteClient();
+                default->{
                     System.out.println("invalid command");
                     return;
                 }
