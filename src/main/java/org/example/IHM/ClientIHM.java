@@ -29,8 +29,8 @@ public class ClientIHM {
             command = sc.nextLine();
             switch(command){
                 case "1"-> createClient();
-                case "2"-> displayAllClient();
-                case "3"-> displayClientByID();
+                case "2"-> displayClientByID();
+                case "3"-> displayAllClient();
                 case "4"-> updateClient();
                 case "5"-> deleteClient();
                 default->{

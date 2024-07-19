@@ -19,7 +19,7 @@ public class Client {
     private int id;
     private String name;
     private String firstname ;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client", fetch = FetchType.EAGER)
     private List<CompteBancaire>comptes;
     private String phone;
 
